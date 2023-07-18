@@ -1,4 +1,3 @@
-![Release Workflow](https://github.com/einarwh/Quibble/.github/workflows/release.yml/badge.svg)
 [![NuGet Status](https://img.shields.io/nuget/v/Quibble.svg?style=flat)](https://www.nuget.org/packages/Quibble/)
 
 # Quibble
