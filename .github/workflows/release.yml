@@ -11,15 +11,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
     - name: Tool restore
       run: dotnet tool restore
     - name: Build
-      run: dotnet build -c Release
+      run: dotnet build -c Release /p:Version=${VERSION}
     - name: Test
-      run: dotnet test -c Release --no-build
-    - name: Pack nugets
-      run: dotnet pack -c Release --no-build --output .
-    - name: Push to NuGet
+      run: dotnet test -c Release /p:Version=${VERSION} --no-build
+    - name: Pack
+      run: dotnet pack -c Release /p:Version=${VERSION} --no-build --output .
+    - name: Push
       run: dotnet nuget push "*.nupkg" --api-key ${{secrets.nuget_api_key}} --source https://api.nuget.org/v3/index.json
