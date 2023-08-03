@@ -4,7 +4,7 @@ storage: none
 framework: net6.0, netstandard2.0
 
 nuget System.Text.Json
-nuget FSharp.Core ~> 6
+nuget FSharp.Core
 nuget Microsoft.NET.Test.Sdk
 nuget xunit
 nuget xunit.runner.visualstudio
